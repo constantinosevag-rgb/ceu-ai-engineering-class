@@ -24,8 +24,12 @@ def rag_search(query: str) -> str:
 
 
 
+
 import random
 import datetime
+import openai
+import os
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @cl.on_message
 async def on_message(message: cl.Message):
@@ -85,12 +89,24 @@ async def on_message(message: cl.Message):
         await cl.Message(content=f"[RAG] {rag_result}").send()
         return
 
-    # Motivational quote fallback
-    quotes = [
-        "Keep going, you're doing great!",
-        "Every day is a new opportunity to learn.",
-        "Success is the sum of small efforts repeated day in and day out.",
-        "Believe in yourself and all that you are.",
-        "Mistakes are proof that you are trying."
-    ]
-    await cl.Message(content=f"Sorry, I don't know the answer to that, but here's a motivational quote: {random.choice(quotes)}").send()
+    # Natural language fallback using OpenAI GPT
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are a helpful, friendly assistant."},
+                {"role": "user", "content": message.content.strip()}
+            ],
+            max_tokens=200
+        )
+        answer = response.choices[0].message.content.strip()
+        await cl.Message(content=answer).send()
+    except Exception as e:
+        quotes = [
+            "Keep going, you're doing great!",
+            "Every day is a new opportunity to learn.",
+            "Success is the sum of small efforts repeated day in and day out.",
+            "Believe in yourself and all that you are.",
+            "Mistakes are proof that you are trying."
+        ]
+        await cl.Message(content=f"Sorry, I don't know the answer to that, but here's a motivational quote: {random.choice(quotes)}").send()
