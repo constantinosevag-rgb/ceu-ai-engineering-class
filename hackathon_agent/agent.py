@@ -22,31 +22,75 @@ def rag_search(query: str) -> str:
             return f"RAG found: {line}"
     return "No relevant info found in knowledge base."
 
+
+
+import random
+import datetime
+
 @cl.on_message
 async def on_message(message: cl.Message):
     user = message.author or "user"
     memory.add(user, message.content)
 
-    # Tool: calculator if message starts with 'calc:'
-    if message.content.strip().lower().startswith("calc:"):
-        expr = message.content[5:].strip()
-        result = simple_calculator(expr)
-        await cl.Message(content=f"[Tool] {result}").send()
+    text = message.content.strip().lower()
+
+    # Greetings
+    greetings = ["hello", "hi", "hey", "good morning", "good afternoon", "good evening"]
+    if any(greet in text for greet in greetings):
+        await cl.Message(content="Hello! How can I help you today?").send()
         return
 
-    # RAG: search KB if message contains 'search:'
-    if message.content.strip().lower().startswith("search:"):
-        query = message.content[7:].strip()
-        result = rag_search(query)
-        await cl.Message(content=f"[RAG] {result}").send()
+    # Farewell
+    farewells = ["bye", "goodbye", "see you", "later", "ciao"]
+    if any(farewell in text for farewell in farewells):
+        await cl.Message(content="Goodbye! Have a great day!").send()
+        return
+
+    # Fun fact
+    if "fun fact" in text:
+        facts = [
+            "Honey never spoils and can last thousands of years.",
+            "Bananas are berries, but strawberries are not.",
+            "The Eiffel Tower was completed in 1889.",
+            "Octopuses have three hearts.",
+            "A group of flamingos is called a 'flamboyance.'"
+        ]
+        await cl.Message(content=f"Fun fact: {random.choice(facts)}").send()
+        return
+
+    # Date and time
+    if "time" in text or "date" in text:
+        now = datetime.datetime.now()
+        await cl.Message(content=f"Current date and time: {now.strftime('%Y-%m-%d %H:%M:%S')}").send()
         return
 
     # Memory: show conversation history if asked
-    if "history" in message.content.lower():
+    if "history" in text:
         hist = memory.get_history(user)
         formatted = "\n".join(hist) if hist else "No history yet."
         await cl.Message(content=f"[Memory] Your history:\n{formatted}").send()
         return
 
-    # Default reply
-    await cl.Message(content=f"[Hackathon Agent] Received: {message.content}").send()
+    # Try to detect and evaluate math expressions
+    import re
+    math_pattern = r"^[-+/*()\d\s\.]+$"
+    if re.match(math_pattern, message.content.strip()):
+        result = simple_calculator(message.content.strip())
+        await cl.Message(content=f"[Tool] {result}").send()
+        return
+
+    # Try to answer from RAG (knowledge base)
+    rag_result = rag_search(message.content.strip())
+    if "RAG found:" in rag_result:
+        await cl.Message(content=f"[RAG] {rag_result}").send()
+        return
+
+    # Motivational quote fallback
+    quotes = [
+        "Keep going, you're doing great!",
+        "Every day is a new opportunity to learn.",
+        "Success is the sum of small efforts repeated day in and day out.",
+        "Believe in yourself and all that you are.",
+        "Mistakes are proof that you are trying."
+    ]
+    await cl.Message(content=f"Sorry, I don't know the answer to that, but here's a motivational quote: {random.choice(quotes)}").send()
