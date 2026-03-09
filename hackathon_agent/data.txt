@@ -1,0 +1,74 @@
+
+
+This is a sample knowledge base for the hackathon agent. You can add course notes or any text here for RAG.
+
+Example fact: The mitochondria is the powerhouse of the cell.
+Example fact: Water boils at 100 degrees Celsius at sea level.
+Example fact: The capital of France is Paris.
+Example fact: The speed of light is approximately 299,792 kilometers per second.
+Example fact: Python is a popular programming language for AI and data science.
+Example fact: The human brain contains about 86 billion neurons.
+Example fact: The Great Wall of China is visible from space only under certain conditions.
+Example fact: The Amazon rainforest produces about 20% of the world's oxygen supply.
+Example fact: The Pythagorean theorem states that a^2 + b^2 = c^2 for right triangles.
+Example fact: The largest planet in our solar system is Jupiter.
+
+# Science
+Example fact: DNA stands for deoxyribonucleic acid and carries genetic information.
+Example fact: Photosynthesis is the process by which green plants convert sunlight into energy.
+Example fact: The periodic table organizes elements by atomic number.
+Example fact: The freezing point of water is 0 degrees Celsius.
+Example fact: The human body has 206 bones.
+Example fact: The sun is a star at the center of our solar system.
+Example fact: The chemical symbol for gold is Au.
+Example fact: The Earth's atmosphere is composed mainly of nitrogen and oxygen.
+Example fact: The theory of relativity was developed by Albert Einstein.
+Example fact: The smallest unit of life is the cell.
+
+# History
+Example fact: The Roman Empire fell in 476 AD.
+Example fact: The Declaration of Independence was signed in 1776.
+Example fact: The first man on the moon was Neil Armstrong in 1969.
+Example fact: The Great Fire of London occurred in 1666.
+Example fact: The Magna Carta was signed in 1215.
+Example fact: World War II ended in 1945.
+Example fact: The Berlin Wall fell in 1989.
+Example fact: The Renaissance was a period of cultural rebirth in Europe.
+Example fact: The ancient Egyptians built the pyramids as tombs for pharaohs.
+Example fact: The Black Death was a devastating pandemic in the 14th century.
+
+# Geography
+Example fact: Mount Everest is the highest mountain in the world.
+Example fact: The Nile is the longest river in the world.
+Example fact: Africa is the second largest continent.
+Example fact: The Sahara is the largest hot desert on Earth.
+Example fact: Australia is both a country and a continent.
+Example fact: The Amazon River flows through South America.
+Example fact: The Dead Sea is the lowest point on Earth's surface.
+Example fact: Japan is an island nation in East Asia.
+Example fact: The equator divides the Earth into northern and southern hemispheres.
+Example fact: The Pacific Ocean is the largest ocean on Earth.
+
+# Technology
+Example fact: The first programmable computer was the Z3, built in 1941.
+Example fact: The internet was invented in the late 20th century.
+Example fact: The World Wide Web was created by Tim Berners-Lee in 1989.
+Example fact: The first smartphone was the IBM Simon, released in 1994.
+Example fact: Artificial intelligence is the simulation of human intelligence by machines.
+Example fact: The binary system uses only 0 and 1 to represent data.
+Example fact: The first email was sent in 1971.
+Example fact: Bluetooth is a wireless technology for exchanging data over short distances.
+Example fact: The microprocessor is the brain of a computer.
+Example fact: 5G is the fifth generation of mobile network technology.
+
+# General Knowledge
+Example fact: Shakespeare wrote "Romeo and Juliet."
+Example fact: The Mona Lisa was painted by Leonardo da Vinci.
+Example fact: The Olympic Games originated in ancient Greece.
+Example fact: The currency of Japan is the yen.
+Example fact: The tallest building in the world is the Burj Khalifa in Dubai.
+Example fact: The coldest place on Earth is Antarctica.
+Example fact: The largest mammal is the blue whale.
+Example fact: Honey never spoils and can last thousands of years.
+Example fact: Bananas are berries, but strawberries are not.
+Example fact: The Eiffel Tower was completed in 1889.
